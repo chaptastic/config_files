@@ -16,7 +16,10 @@ export CLICOLOR=1
 setopt prompt_subst
 
 # prompt
-export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
+# export PS1='$(git_prompt_info)%{$fg_bold[green]%}%n@%m: # %{$fg_bold[white]%}%2c%{$reset_color%}%# '
+
+autoload promptinit && promptinit
+prompt adam2
 
 # autocompletion for ruby_test
 # works with tu/tf aliases

@@ -18,3 +18,4 @@
   plre = pull --rebase
   st = status
   out = log origin..HEAD
+  ms = merge --squash
