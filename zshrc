@@ -13,8 +13,8 @@ if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
 
-# vi mode
-bindkey -v
+# emacs mode
+bindkey -e
 
 # use incremental search
 bindkey ^R history-incremental-search-backward
@@ -30,7 +30,6 @@ setopt histignoredups
 
 # keep more history
 export HISTSIZE=200
-
 
 # MacPorts Installer addition on 2009-03-28_at_13:26:33: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
