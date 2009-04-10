@@ -13,7 +13,7 @@
 [core]
 	excludesfile = ~/.gitignore
 [alias]
-        ci = commit
+        ci = commit -v
         st = status
         co = checkout
         sre = svn rebase
