@@ -13,8 +13,7 @@ if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
 
-# vi mode
-bindkey -v
+bindkey -e
 
 # use incremental search
 bindkey ^R history-incremental-search-backward
