@@ -1,21 +1,23 @@
-# ADD LOCAL CONFIGURATION HERE
-
-
-# DO NOT EDIT BELOW THIS LINE
+[core]
+        editor = mate -w
+        whitespace = -trailing-space
+[user]
+        email = chap.lovejoy@hannonhill.com
+        name = Chap Lovejoy
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+	interactive = auto
+	ui = auto
 [core]
 	excludesfile = ~/.gitignore
 [alias]
-  c = commit -m
-  a = add
-  di = diff
-  dic = diff --cached
-  pl = pull
-  ps = push
-  plre = pull --rebase
-  st = status
-  out = log origin..HEAD
-  ms = merge --squash
+        ci = commit -v
+        st = status
+        co = checkout
+        sre = svn rebase
+        sdc = svn dcommit
+        ms = merge --squash
+[merge]
+        tool = opendiff
