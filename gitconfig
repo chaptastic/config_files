@@ -1,5 +1,5 @@
 [core]
-	editor = mvim +0 -f
+	editor = mvim --remote-wait-silent +0
 	whitespace = -trailing-space
 [color]
 	diff = auto
