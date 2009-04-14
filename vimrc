@@ -164,9 +164,10 @@ endif
 " Color scheme
 if has("gui_running")
   set background=light
-colorscheme peaksea
-highlight LineNr guibg=#c0c0c0
-highlight NonText		guifg=#404040
+  colorscheme peaksea
+  highlight LineNr guibg=#c0c0c0
+  highlight NonText		guifg=#808080
+  highlight SpecialKey guifg=#808080
 else
   set t_Co=256
   set background=dark

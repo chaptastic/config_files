@@ -1,5 +1,5 @@
 [core]
-	editor = mate -w
+	editor = mvim +0 -f
 	whitespace = -trailing-space
 [color]
 	diff = auto
