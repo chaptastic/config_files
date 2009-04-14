@@ -1,9 +1,9 @@
 [core]
-        editor = mate -w
-        whitespace = -trailing-space
+	editor = mate -w
+	whitespace = -trailing-space
 [user]
-        email = chap.lovejoy@hannonhill.com
-        name = Chap Lovejoy
+	email = chap.lovejoy@hannonhill.com
+	name = Chap Lovejoy
 [color]
 	diff = auto
 	status = auto
@@ -13,11 +13,11 @@
 [core]
 	excludesfile = ~/.gitignore
 [alias]
-        ci = commit -v
-        st = status
-        co = checkout
-        sre = svn rebase
-        sdc = svn dcommit
-        ms = merge --squash
+	ci = commit -v
+	st = status
+	co = checkout
+	sre = svn rebase
+	sdc = svn dcommit
+	ms = merge --squash
 [merge]
-        tool = opendiff
+	tool = opendiff

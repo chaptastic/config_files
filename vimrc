@@ -78,7 +78,8 @@ set expandtab
 set laststatus=2
 
 " \ is the leader character
-let mapleader = "\\"
+" let mapleader = "\\"
+let mapleader = ","
 
 " Edit the README_FOR_APP (makes :R commands work)
 map <Leader>R :e doc/README_FOR_APP<CR>
@@ -149,9 +150,9 @@ if executable("ack")
 endif
 
 " Color scheme
-" colorscheme vividchalk
-" highlight NonText guibg=#060606
-" highlight Folded  guibg=#0A0A0A guifg=#9090D0
+"set background=light
+colorscheme peaksea
+highlight LineNr guibg=#c0c0c0
 
 " Numbers
 set number
