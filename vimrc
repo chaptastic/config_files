@@ -23,7 +23,7 @@ map Q gq
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
-  set hlsearch
+  set nohlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -117,7 +117,7 @@ map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
 " Maps autocomplete to tab
-imap <Tab> <C-N>
+" imap <Tab> <C-N>
 
 " Duplicate a selection
 " Visual mode: D
@@ -131,6 +131,18 @@ nmap <F1> <Esc>
 
 " Press ^F from insert mode to insert the current file name
 imap <C-F> <C-R>=expand("%")<CR>
+
+" Apple-Enter opens a new line below in edit mode
+imap <D-Enter> <C-o>o
+
+" Map emacs input keys
+imap <C-a> <C-o>^
+imap <C-e> <C-o>$
+imap <C-k> <C-o>D
+
+" Map Cmd-/ to comment block in visual and normal mode
+vmap <D-/> :TCommentBlock<CR>
+nmap <D-/> :TCommentBlock<CR>
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
@@ -150,9 +162,17 @@ if executable("ack")
 endif
 
 " Color scheme
-"set background=light
+if has("gui_running")
+  set background=light
 colorscheme peaksea
 highlight LineNr guibg=#c0c0c0
+highlight NonText		guifg=#404040
+else
+  set t_Co=256
+  set background=dark
+colorscheme peaksea
+endif
+
 
 " Numbers
 set number

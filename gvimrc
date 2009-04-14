@@ -1,5 +1,5 @@
 " Window size
-set winwidth=85
+set winwidth=100
 let g:halfsize = 86
 let g:fullsize = 171
 set lines=50

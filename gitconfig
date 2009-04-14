@@ -1,9 +1,6 @@
 [core]
 	editor = mate -w
 	whitespace = -trailing-space
-[user]
-	email = chap.lovejoy@hannonhill.com
-	name = Chap Lovejoy
 [color]
 	diff = auto
 	status = auto
