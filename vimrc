@@ -174,7 +174,6 @@ else
 colorscheme peaksea
 endif
 
-
 " Numbers
 set number
 set numberwidth=5
@@ -190,6 +189,10 @@ set wildmode=list:longest,list:full
 " case only matters with mixed case expressions
 set ignorecase
 set smartcase
+
+" use hidden buffers instead of annoyingly closing
+set hidden
+set confirm
 
 function! ToggleScratch()
   if expand('%') == g:ScratchBufferName

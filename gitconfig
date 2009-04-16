@@ -18,3 +18,5 @@
 	ms = merge --squash
 [merge]
 	tool = opendiff
+[diff "ruby"]
+	funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
