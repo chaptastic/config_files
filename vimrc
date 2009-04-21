@@ -141,8 +141,8 @@ imap <C-e> <C-o>$
 imap <C-k> <C-o>D
 
 " Map Cmd-/ to comment block in visual and normal mode
-vmap <D-/> :TCommentBlock<CR>
-nmap <D-/> :TCommentBlock<CR>
+vmap <D-/> :TComment<CR>
+nmap <D-/> :TComment<CR>
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
