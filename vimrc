@@ -203,3 +203,11 @@ function! ToggleScratch()
 endfunction
 
 map <leader>s :call ToggleScratch()<CR>
+
+let NERDChristmasTree = 1
+let NERDTreeShowBookmarks = 1
+let NERDTreeChDirMode = 2
+let NERDTreeWinSize = 30
+let NERDTreeMoveMode = 2
+
+map <leader>t :NERDTreeToggle<CR>
