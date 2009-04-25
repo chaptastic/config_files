@@ -19,10 +19,11 @@ let g:proj_flags = "imst"
 
 " Set the window size
 set lines=50
-let &columns = g:halfsize + g:proj_window_width + 1
+" let &columns = g:halfsize + g:proj_window_width + 1
+let &columns = g:halfsize
 
 " Use console dialogs
 set guioptions+=c
 
 " Start project plugin on new window
-autocmd GUIEnter * Project
+" autocmd GUIEnter * Project

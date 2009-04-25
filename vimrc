@@ -141,8 +141,8 @@ imap <C-e> <C-o>$
 imap <C-k> <C-o>D
 
 " Map Cmd-/ to comment block in visual and normal mode
-vmap <D-/> :TCommentBlock<CR>
-nmap <D-/> :TCommentBlock<CR>
+vmap <D-/> :TComment<CR>
+nmap <D-/> :TComment<CR>
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
@@ -203,3 +203,11 @@ function! ToggleScratch()
 endfunction
 
 map <leader>s :call ToggleScratch()<CR>
+
+let NERDChristmasTree = 1
+let NERDTreeShowBookmarks = 1
+let NERDTreeChDirMode = 2
+let NERDTreeWinSize = 30
+let NERDTreeMoveMode = 2
+
+map <leader>t :NERDTreeToggle<CR>
