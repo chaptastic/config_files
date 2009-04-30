@@ -13,9 +13,9 @@ set vb
 set guioptions-=T
 
 " Setup project settings
-let g:proj_window_width = 30
-let g:proj_window_increment = 30
-let g:proj_flags = "imst"
+" let g:proj_window_width = 30
+" let g:proj_window_increment = 30
+" let g:proj_flags = "imst"
 
 " Set the window size
 set lines=50

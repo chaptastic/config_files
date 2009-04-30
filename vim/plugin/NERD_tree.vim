@@ -2357,11 +2357,18 @@ function! s:createTreeWin()
     let splitSize = g:NERDTreeWinSize
     silent! exec splitLocation . 'vertical ' . splitSize . ' new'
 
+    let newBufferNr = winbufnr(0)
+
     if !exists('t:NERDTreeBufName')
         let t:NERDTreeBufName = s:nextBufferName()
         silent! exec "edit " . t:NERDTreeBufName
     else
         silent! exec "buffer " . t:NERDTreeBufName
+
+        if &hidden
+            " close the buffer created by new
+            silent! exec "bdelete " . newBufferNr
+        endif
     endif
 
     setlocal winfixwidth
