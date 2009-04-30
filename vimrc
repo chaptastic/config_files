@@ -209,5 +209,6 @@ let NERDTreeShowBookmarks = 1
 let NERDTreeChDirMode = 2
 let NERDTreeWinSize = 30
 let NERDTreeMoveMode = 2
+let NERDTreeQuitOnOpen = 1
 
 map <leader>t :NERDTreeToggle<CR>
