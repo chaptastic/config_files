@@ -127,7 +127,7 @@ vmap D y'>p
 au! BufRead,BufNewFile *.haml         setfiletype haml
 
 " No Help, please
-nmap <F1> <Esc>
+map <F1> <Esc>
 
 " Press ^F from insert mode to insert the current file name
 imap <C-F> <C-R>=expand("%")<CR>
@@ -212,3 +212,5 @@ let NERDTreeMoveMode = 2
 let NERDTreeQuitOnOpen = 1
 
 map <leader>t :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>bd :Bclose<CR>
+nmap <leader>x :Bclose<CR>
