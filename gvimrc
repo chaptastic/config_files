@@ -25,5 +25,9 @@ let &columns = g:halfsize
 " Use console dialogs
 set guioptions+=c
 
+" Hide scrollbars
+set guioptions-=r
+set guioptions-=L
+
 " Start project plugin on new window
 " autocmd GUIEnter * Project

@@ -35,11 +35,16 @@ promptinit
 
 prompt adam2
 
-# ignore duplicate history entries
-setopt histignoredups
-
 # keep more history
-export HISTSIZE=200
+export HISTSIZE=2100
+export SAVEHIST=2000
+export HISTFILE=$HOME/.zsh_history
+setopt append_history
+setopt hist_expire_dups_first
+setopt hist_find_no_dups
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt inc_append_history
 
 export PATH=~/bin:/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/libexec/git-core
 export MANPATH=/opt/local/share/man:$MANPATH
