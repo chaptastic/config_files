@@ -9,9 +9,6 @@ typeset -U fpath
 # automatically enter directories without cd
 setopt auto_cd
 
-# use vim as an editor
-export EDITOR=mvim
-
 # aliases
 if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
@@ -41,12 +38,15 @@ setopt histignoredups
 # keep more history
 export HISTSIZE=200
 
-export PATH=~/bin:/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/libexec/git-core
+export PATH=~/bin:/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/libexec/git-core:~/ec2-tools/bin
 export MANPATH=/opt/local/share/man:$MANPATH
 
-export EDITOR="mate -w"
+export EDITOR="mvim -f"
 export ARCHFLAGS="-arch i386"
-alias slice="ssh -p 6120 209.20.82.172"
 
 export LC_CTYPE=en_US.UTF-8
 
+# aliases
+if [ -e "$HOME/.zsh_local" ]; then
+  source "$HOME/.zsh_local"
+fi
