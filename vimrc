@@ -61,12 +61,12 @@ endif " has("autocmd")
 if has("folding")
   set foldenable
   set foldmethod=syntax
-  set foldlevel=0
+  set foldlevel=1
   set foldnestmax=2
   set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
 
   " automatically open folds at the starting cursor position
-  " autocmd BufReadPost .foldo!
+  autocmd BufReadPost .foldo!
 endif
 
 " Softtabs, 2 spaces
@@ -214,3 +214,8 @@ let NERDTreeQuitOnOpen = 1
 map <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>bd :Bclose<CR>
 nmap <leader>x :Bclose<CR>
+
+" automatically save and restore views
+au BufWinLeave * mkview
+au BufWinEnter * silent! loadview
+
