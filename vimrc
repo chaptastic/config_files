@@ -163,15 +163,25 @@ endif
 
 " Color scheme
 if has("gui_running")
-  set background=light
+  " set background=light
+  " colorscheme peaksea
+  " highlight LineNr guibg=#c0c0c0
+  " highlight NonText		guifg=#808080
+  " highlight SpecialKey guifg=#808080
+  set background=dark
   colorscheme peaksea
-  highlight LineNr guibg=#c0c0c0
+  highlight LineNr guibg=#101010
   highlight NonText		guifg=#808080
   highlight SpecialKey guifg=#808080
+  highlight Cursor guibg=#60c060
+  " colorscheme wombat
+  " highlight LineNr guibg=#101010
+  " highlight NonText		guifg=#808080
+  " highlight SpecialKey guifg=#808080
 else
   set t_Co=256
   set background=dark
-colorscheme peaksea
+  colorscheme peaksea
 endif
 
 " Numbers
