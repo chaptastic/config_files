@@ -51,6 +51,8 @@ export ARCHFLAGS="-arch i386"
 
 export LC_CTYPE=en_US.UTF-8
 
+export CLOJURE_CP=$HOME/.clojure/clojure.jar:$HOME/.clojure/clojure-contrib.jar
+
 # aliases
 if [ -e "$HOME/.zsh_local" ]; then
   source "$HOME/.zsh_local"

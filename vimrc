@@ -229,3 +229,4 @@ nmap <leader>x :Bclose<CR>
 au BufWinLeave * mkview
 au BufWinEnter * silent! loadview
 
+let vimclojure#NailgunClient = "~/.vim/bin/ng"
