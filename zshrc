@@ -43,7 +43,7 @@ setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt inc_append_history
 
-export PATH=~/bin:/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/libexec/git-core:~/ec2-tools/bin
+export PATH=~/bin:/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/libexec/git-core:~/ec2-tools/bin:~/.clojure/bin
 export MANPATH=/opt/local/share/man:$MANPATH
 
 export EDITOR="mvim -f"
