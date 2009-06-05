@@ -85,21 +85,21 @@ let mapleader = ","
 map <Leader>R :e doc/README_FOR_APP<CR>
 
 " Leader shortcuts for Rails commands
-map <Leader>m :Rmodel 
-map <Leader>c :Rcontroller 
-map <Leader>v :Rview 
-map <Leader>u :Runittest 
-map <Leader>f :Rfunctionaltest 
-map <Leader>tm :RTmodel 
-map <Leader>tc :RTcontroller 
-map <Leader>tv :RTview 
-map <Leader>tu :RTunittest 
-map <Leader>tf :RTfunctionaltest 
-map <Leader>sm :RSmodel 
-map <Leader>sc :RScontroller 
-map <Leader>sv :RSview 
-map <Leader>su :RSunittest 
-map <Leader>sf :RSfunctionaltest 
+" map <Leader>m :Rmodel 
+" map <Leader>c :Rcontroller 
+" map <Leader>v :Rview 
+" map <Leader>u :Runittest 
+" map <Leader>f :Rfunctionaltest 
+" map <Leader>tm :RTmodel 
+" map <Leader>tc :RTcontroller 
+" map <Leader>tv :RTview 
+" map <Leader>tu :RTunittest 
+" map <Leader>tf :RTfunctionaltest 
+" map <Leader>sm :RSmodel 
+" map <Leader>sc :RScontroller 
+" map <Leader>sv :RSview 
+" map <Leader>su :RSunittest 
+" map <Leader>sf :RSfunctionaltest 
 
 " Hide search highlighting
 map <Leader>h :set invhls <CR>
@@ -110,7 +110,7 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+" map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -230,3 +230,8 @@ au BufWinLeave * mkview
 au BufWinEnter * silent! loadview
 
 let vimclojure#NailgunClient = "~/.vim/bin/ng"
+
+set spell
+set spelllang=en_us
+
+let g:rails_abbreviations = 0
