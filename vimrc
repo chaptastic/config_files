@@ -85,32 +85,32 @@ let mapleader = ","
 map <Leader>R :e doc/README_FOR_APP<CR>
 
 " Leader shortcuts for Rails commands
-map <Leader>m :Rmodel 
-map <Leader>c :Rcontroller 
-map <Leader>v :Rview 
-map <Leader>u :Runittest 
-map <Leader>f :Rfunctionaltest 
-map <Leader>tm :RTmodel 
-map <Leader>tc :RTcontroller 
-map <Leader>tv :RTview 
-map <Leader>tu :RTunittest 
-map <Leader>tf :RTfunctionaltest 
-map <Leader>sm :RSmodel 
-map <Leader>sc :RScontroller 
-map <Leader>sv :RSview 
-map <Leader>su :RSunittest 
-map <Leader>sf :RSfunctionaltest 
+" map <Leader>m :Rmodel 
+" map <Leader>c :Rcontroller 
+" map <Leader>v :Rview 
+" map <Leader>u :Runittest 
+" map <Leader>f :Rfunctionaltest 
+" map <Leader>tm :RTmodel 
+" map <Leader>tc :RTcontroller 
+" map <Leader>tv :RTview 
+" map <Leader>tu :RTunittest 
+" map <Leader>tf :RTfunctionaltest 
+" map <Leader>sm :RSmodel 
+" map <Leader>sc :RScontroller 
+" map <Leader>sv :RSview 
+" map <Leader>su :RSunittest 
+" map <Leader>sf :RSfunctionaltest 
 
 " Hide search highlighting
 map <Leader>h :set invhls <CR>
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+" map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -139,6 +139,8 @@ imap <D-Enter> <C-o>o
 imap <C-a> <C-o>^
 imap <C-e> <C-o>$
 imap <C-k> <C-o>D
+cmap <C-a> <C-Left>
+cmap <C-e> <C-Right>
 
 " Map Cmd-/ to comment block in visual and normal mode
 vmap <D-/> :TComment<CR>
@@ -230,3 +232,14 @@ au BufWinLeave * mkview
 au BufWinEnter * silent! loadview
 
 let vimclojure#NailgunClient = "~/.vim/bin/ng"
+" Clojure syntax support
+let g:clj_highlight_builtins=1
+let g:clj_paren_rainbow=1
+au Bufenter,Bufnewfile *.clj setfiletype clojure
+au Bufenter,Bufnewfile *.clj setl lisp
+let g:clj_want_gorilla = 1
+let g:clj_highlight_contrib = 1
+
+" erlang settings
+let g:erlangHighlightBif = 1
+
