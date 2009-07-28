@@ -14,7 +14,7 @@
 	st = status
 	co = checkout
 	sre = svn rebase
-	sdc = svn dcommit
+	sdc = svn dcommit --rmdir
 	ms = merge --squash
 [merge]
 	tool = opendiff

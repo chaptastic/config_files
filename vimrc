@@ -235,3 +235,5 @@ set spell
 set spelllang=en_us
 
 let g:rails_abbreviations = 0
+
+set popt=syntax:y,duplex:long,paper:letter
