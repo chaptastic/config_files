@@ -43,10 +43,11 @@ setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt inc_append_history
 
-export PATH=~/bin:/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/libexec/git-core:~/ec2-tools/bin:~/.clojure/bin
+export PATH=~/bin:~/.cabal/bin:/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/libexec/git-core:~/ec2-tools/bin:~/.clojure/bin
 export MANPATH=/opt/local/share/man:$MANPATH
 
-export EDITOR="mvim -f"
+#export EDITOR="mvim -f"
+export EDITOR="mvim -f -c \"au VimLeave * !open -a Terminal\""
 export ARCHFLAGS="-arch i386"
 
 export LC_CTYPE=en_US.UTF-8

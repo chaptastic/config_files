@@ -148,6 +148,8 @@ bufexplorer-todo	bufexplorer.txt	/*bufexplorer-todo*
 bufexplorer-usage	bufexplorer.txt	/*bufexplorer-usage*
 bufexplorer.txt	bufexplorer.txt	/*bufexplorer.txt*
 buffer-explorer	bufexplorer.txt	/*buffer-explorer*
+clj-nailgun-server	clojure.txt	/*clj-nailgun-server*
+clojure.vim	clojure.txt	/*clojure.vim*
 config/rails.vim	rails.txt	/*config\/rails.vim*
 creating-snippets	snippets_emu.txt	/*creating-snippets*
 cs	surround.txt	/*cs*

@@ -50,9 +50,12 @@ EvalLine	clojure.txt	/*EvalLine*
 EvalParagraph	clojure.txt	/*EvalParagraph*
 EvalToplevel	clojure.txt	/*EvalToplevel*
 FindDoc	clojure.txt	/*FindDoc*
+<<<<<<< HEAD:vim/doc/tags
 GetLatestVimScripts	pi_getscript.txt	/*GetLatestVimScripts*
 GetLatestVimScripts-copyright	pi_getscript.txt	/*GetLatestVimScripts-copyright*
 GetLatestVimScripts_dat	pi_getscript.txt	/*GetLatestVimScripts_dat*
+=======
+>>>>>>> origin/master:vim/doc/tags
 GotoSourceInteractive	clojure.txt	/*GotoSourceInteractive*
 GotoSourceWord	clojure.txt	/*GotoSourceWord*
 JavadocLookupInteractive	clojure.txt	/*JavadocLookupInteractive*
@@ -148,11 +151,8 @@ bufexplorer-todo	bufexplorer.txt	/*bufexplorer-todo*
 bufexplorer-usage	bufexplorer.txt	/*bufexplorer-usage*
 bufexplorer.txt	bufexplorer.txt	/*bufexplorer.txt*
 buffer-explorer	bufexplorer.txt	/*buffer-explorer*
-<<<<<<< HEAD:vim/doc/tags
 clj-nailgun-server	clojure.txt	/*clj-nailgun-server*
 clojure.vim	clojure.txt	/*clojure.vim*
-=======
->>>>>>> b66b0c141aa92fe24bee7332efaa54ad4c2891f8:vim/doc/tags
 config/rails.vim	rails.txt	/*config\/rails.vim*
 creating-snippets	snippets_emu.txt	/*creating-snippets*
 cs	surround.txt	/*cs*
@@ -198,6 +198,7 @@ g:tcommentMapLeader2	tComment.txt	/*g:tcommentMapLeader2*
 g:tcommentMapLeaderOp1	tComment.txt	/*g:tcommentMapLeaderOp1*
 g:tcommentMapLeaderOp2	tComment.txt	/*g:tcommentMapLeaderOp2*
 g:tcommentOpModeExtra	tComment.txt	/*g:tcommentOpModeExtra*
+<<<<<<< HEAD:vim/doc/tags
 g:vimball_home	pi_vimball.txt	/*g:vimball_home*
 g:vimball_mkdir	pi_vimball.txt	/*g:vimball_mkdir*
 g:vimball_path_escape	pi_vimball.txt	/*g:vimball_path_escape*
@@ -222,6 +223,9 @@ glvs-install	pi_getscript.txt	/*glvs-install*
 glvs-options	pi_getscript.txt	/*glvs-options*
 glvs-plugins	pi_getscript.txt	/*glvs-plugins*
 glvs-usage	pi_getscript.txt	/*glvs-usage*
+=======
+gi	clojure.txt	/*gi*
+>>>>>>> origin/master:vim/doc/tags
 greplace.txt	greplace.txt	/*greplace.txt*
 gw	clojure.txt	/*gw*
 i_CTRL-G_S	surround.txt	/*i_CTRL-G_S*
@@ -469,6 +473,7 @@ v_[%	matchit.txt	/*v_[%*
 v_]%	matchit.txt	/*v_]%*
 v_a%	matchit.txt	/*v_a%*
 v_g%	matchit.txt	/*v_g%*
+<<<<<<< HEAD:vim/doc/tags
 vba	pi_vimball.txt	/*vba*
 vimball	pi_vimball.txt	/*vimball*
 vimball-contents	pi_vimball.txt	/*vimball-contents*
@@ -476,6 +481,8 @@ vimball-extract	pi_vimball.txt	/*vimball-extract*
 vimball-history	pi_vimball.txt	/*vimball-history*
 vimball-intro	pi_vimball.txt	/*vimball-intro*
 vimball-manual	pi_vimball.txt	/*vimball-manual*
+=======
+>>>>>>> origin/master:vim/doc/tags
 vimclojure.txt	clojure.txt	/*vimclojure.txt*
 vs	surround.txt	/*vs*
 yS	surround.txt	/*yS*

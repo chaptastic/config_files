@@ -139,6 +139,8 @@ imap <D-Enter> <C-o>o
 imap <C-a> <C-o>^
 imap <C-e> <C-o>$
 imap <C-k> <C-o>D
+cmap <C-a> <C-Left>
+cmap <C-e> <C-Right>
 
 " Map Cmd-/ to comment block in visual and normal mode
 vmap <D-/> :TComment<CR>
@@ -230,6 +232,16 @@ au BufWinLeave * mkview
 au BufWinEnter * silent! loadview
 
 let vimclojure#NailgunClient = "~/.vim/bin/ng"
+" Clojure syntax support
+let g:clj_highlight_builtins=1
+let g:clj_paren_rainbow=1
+au Bufenter,Bufnewfile *.clj setfiletype clojure
+au Bufenter,Bufnewfile *.clj setl lisp
+let g:clj_want_gorilla = 1
+let g:clj_highlight_contrib = 1
+
+" erlang settings
+let g:erlangHighlightBif = 1
 
 set spell
 set spelllang=en_us
