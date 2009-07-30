@@ -1,0 +1,3 @@
+[submodule "emacs.d/rinari"]
+	path = emacs.d/rinari
+	url = git://github.com/eschulte/rinari.git
