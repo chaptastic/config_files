@@ -1,6 +1,6 @@
 (setq dotfiles-dir (expand-file-name "~/.emacs.d/"))
 (add-to-list 'load-path dotfiles-dir)
-(add-to-list 'load-path (concat dotfiles-dir "icicles"))
+;; (add-to-list 'load-path (concat dotfiles-dir "icicles"))
 
 (setq mac-tool-bar-display-mode nil)
 (tool-bar-mode nil)
@@ -12,10 +12,12 @@
 
 (global-set-key (kbd "A-/") 'comment-or-uncomment-region-or-line)
 
+(require 'redo)
+
 (setq viper-mode t)
 (require 'viper)
 
-(setq vimpulse-experimental nil)
+;; (setq vimpulse-experimental nil)
 (require 'vimpulse)
 
 ;; Support for marking a rectangle of text with highlighting.
@@ -47,11 +49,13 @@
 (set-face-font 'default
                "-apple-consolas-medium-r-normal--12-0-72-72-m-0-iso10646-1")
 
-;; (require 'ido)
-;; (ido-mode t)
+(require 'fuzzy-match)
 
-(load-library "icicles")
-(icy-mode t)
+(require 'ido)
+(ido-mode t)
+
+;; (load-library "icicles")
+;; (icy-mode t)
 
 ;; Ruby setup
 
