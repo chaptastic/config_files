@@ -1,16 +1,16 @@
-(setq load-path (cons (expand-file-name "~/.emacs.d") load-path))
-(setq load-path (cons (expand-file-name "~/.emacs.d/icicles") load-path))
+(setq dotfiles-dir (expand-file-name "~/.emacs.d/"))
+(add-to-list 'load-path dotfiles-dir)
+(add-to-list 'load-path (concat dotfiles-dir "icicles"))
 
 (setq mac-tool-bar-display-mode nil)
 (tool-bar-mode nil)
 
 (fringe-mode 'default)
 
-(setq custom-file "~/.emacs.d/customizations.el")
+(setq custom-file (concat dotfiles-dir "customizations.el"))
 (load custom-file)
 
-(global-set-key (kbd "A-/")
-                'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "A-/") 'comment-or-uncomment-region-or-line)
 
 (setq viper-mode t)
 (require 'viper)
@@ -64,5 +64,25 @@
 
 ;; Make ,be open the buffer menu
 (define-key viper-vi-global-user-map ",be" 'buffer-menu)
-(define-key viper-vi-global-user-map "C-a" 'beginning-of-visual-line)
-(define-key viper-vi-global-user-map "C-e" 'end-of-visual-line)
+(define-key viper-vi-global-user-map "C-a" 'viper-bol-and-skip-white)
+(define-key viper-vi-global-user-map "C-e" 'viper-goto-eol)
+
+;; Use j/k for down/up in buffer menu
+(define-key Buffer-menu-mode-map "j" 'visual-line-down)
+(define-key Buffer-menu-mode-map "k" 'visual-line-up)
+
+(require 'project-setup)
+
+;; Work around a bug on OS X where system-name is FQDN
+(if (eq system-type 'darwin)
+    (setq system-name (car (split-string system-name "\\."))))
+
+(setq system-specific-config (concat dotfiles-dir system-name ".el")
+      user-specific-config (concat dotfiles-dir user-login-name ".el")
+      user-specific-dir (concat dotfiles-dir user-login-name))
+(add-to-list 'load-path user-specific-dir)
+
+(if (file-exists-p system-specific-config) (load system-specific-config))
+(if (file-exists-p user-specific-config) (load user-specific-config))
+(if (file-exists-p user-specific-dir)
+  (mapc #'load (directory-files user-specific-dir nil ".*el$")))
