@@ -11,46 +11,60 @@
 (load custom-file)
 
 (global-set-key (kbd "A-/") 'comment-or-uncomment-region-or-line)
+(define-key global-map (kbd "RET") 'newline-and-indent)
 
 (require 'redo)
 
-(setq viper-mode t)
-(require 'viper)
+(defun setup-viper ()
+  "Set up viper mode"
+  (setq viper-mode t)
+  (require 'viper)
 
-;; (setq vimpulse-experimental nil)
-(require 'vimpulse)
+  ;; (setq vimpulse-experimental nil)
+  (require 'vimpulse)
 
-(defadvice viper-maybe-checkout (around viper-svn-checkin-fix activate)
-  "Advise viper-maybe-checkout to not do anything"
-  nil
+  (defadvice viper-maybe-checkout (around viper-svn-checkin-fix activate)
+    "Advise viper-maybe-checkout to not do anything"
+    nil
+    )
+
+  (setq set-region-to-isearch-match nil)
+
+  ;; List of keys found at
+  ;; http://stackoverflow.com/questions/98225/vim-macros-dont-work
+  (define-key viper-vi-global-user-map [(delete)] 'delete-char)
+  (define-key viper-vi-global-user-map "/" 'isearch-forward-regexp)
+  (define-key viper-vi-global-user-map "?" 'isearch-backward-regexp)
+  (define-key viper-vi-global-user-map "\C-wh" 'windmove-left)
+  (define-key viper-vi-global-user-map "\C-wj" 'windmove-down)
+  (define-key viper-vi-global-user-map "\C-wk" 'windmove-up)
+  (define-key viper-vi-global-user-map "\C-wl" 'windmove-right)
+  (define-key viper-vi-global-user-map "\C-wv" '(lambda () (interactive)
+						  (split-window-horizontally)
+						  (other-window 1)
+						  (switch-to-buffer (other-buffer))))
+  (define-key viper-vi-global-user-map "n" 'aquamacs-repeat-isearch)
+
+  ;; (define-key viper-visual-mode-map "F" 'viper-find-char-backward)
+  ;; (define-key viper-visual-mode-map "t" 'viper-goto-char-forward)
+  ;; (define-key viper-visual-mode-map "T" 'viper-goto-char-backward)
+  ;; (define-key viper-visual-mode-map "e" '(lambda ()
+  ;;                                          (interactive)
+  ;;                                          (viper-end-of-word 1)
+  ;;                                          (viper-forward-char 1)))
+
+  (push '("only" (delete-other-windows)) ex-token-alist)
+  (push '("close" (delete-window)) ex-token-alist)
+
+  ;; Make ,be open the buffer menu
+  (define-key viper-vi-global-user-map ",be" 'buffer-menu)
+  (define-key viper-vi-global-user-map "\C-a" 'viper-bol-and-skip-white)
+  (define-key viper-vi-global-user-map "\C-e" 'viper-goto-eol)
 )
 
-(setq set-region-to-isearch-match nil)
-;; List of keys found at
-;; http://stackoverflow.com/questions/98225/vim-macros-dont-work
-(define-key viper-vi-global-user-map [(delete)] 'delete-char)
-(define-key viper-vi-global-user-map "/" 'isearch-forward-regexp)
-(define-key viper-vi-global-user-map "?" 'isearch-backward-regexp)
-(define-key viper-vi-global-user-map "\C-wh" 'windmove-left)
-(define-key viper-vi-global-user-map "\C-wj" 'windmove-down)
-(define-key viper-vi-global-user-map "\C-wk" 'windmove-up)
-(define-key viper-vi-global-user-map "\C-wl" 'windmove-right)
-(define-key viper-vi-global-user-map "\C-wv" '(lambda () (interactive)
-                                                (split-window-horizontally)
-                                                (other-window 1)
-                                                (switch-to-buffer (other-buffer))))
-(define-key viper-vi-global-user-map "n" 'aquamacs-repeat-isearch)
-
-;; (define-key viper-visual-mode-map "F" 'viper-find-char-backward)
-;; (define-key viper-visual-mode-map "t" 'viper-goto-char-forward)
-;; (define-key viper-visual-mode-map "T" 'viper-goto-char-backward)
-;; (define-key viper-visual-mode-map "e" '(lambda ()
-;;                                          (interactive)
-;;                                          (viper-end-of-word 1)
-;;                                          (viper-forward-char 1)))
-
-(push '("only" (delete-other-windows)) ex-token-alist)
-(push '("close" (delete-window)) ex-token-alist)
+(setq use-viper-mode nil)
+(if use-viper-mode
+    (setup-viper))
 
 ;; Support for marking a rectangle of text with highlighting.
 (require 'rect-mark)
@@ -98,10 +112,6 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
 
-;; Make ,be open the buffer menu
-(define-key viper-vi-global-user-map ",be" 'buffer-menu)
-(define-key viper-vi-global-user-map "\C-a" 'viper-bol-and-skip-white)
-(define-key viper-vi-global-user-map "\C-e" 'viper-goto-eol)
 
 ;; Use j/k for down/up in buffer menu
 (define-key Buffer-menu-mode-map "j" 'visual-line-down)
