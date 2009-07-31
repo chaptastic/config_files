@@ -5,6 +5,8 @@
 (setq mac-tool-bar-display-mode nil)
 (tool-bar-mode nil)
 
+(setq vc-follow-symlinks nil)
+
 (fringe-mode 'default)
 
 (setq custom-file (concat dotfiles-dir "customizations.el"))
@@ -117,7 +119,11 @@
 (define-key Buffer-menu-mode-map "j" 'visual-line-down)
 (define-key Buffer-menu-mode-map "k" 'visual-line-up)
 
-(require 'project-setup)
+;;(require 'project-setup)
+(load-file (concat dotfiles-dir "cedet-1.0pre6/common/cedet.el"))
+(global-ede-mode 1)                 ; Enable the Project management system
+(semantic-load-enable-code-helpers) ; Enable prototype help and smart completion 
+(global-srecode-minor-mode 1)       ; Enable template insertion menu
 
 ;; Work around a bug on OS X where system-name is FQDN
 (if (eq system-type 'darwin)
