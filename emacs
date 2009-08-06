@@ -4,9 +4,9 @@
 
 (add-to-list 'load-path "/usr/local/lib/erlang/lib/tools-2.6.4/emacs/")
 
-(setq erlang-root-dir "/usr/local/lib/erlang/")
-(add-to-list 'exec-path (concat erlang-root-dir "bin"))
-(require 'erlang-start)
+;(setq erlang-root-dir "/usr/local/lib/erlang/")
+;(add-to-list 'exec-path (concat erlang-root-dir "bin"))
+;(require 'erlang-start)
 
 (setq mac-tool-bar-display-mode nil)
 (tool-bar-mode nil)
@@ -26,7 +26,8 @@
 
 (require 'redo)
 
-
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (setq viper-mode nil)
 (defun setup-viper ()
