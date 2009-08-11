@@ -104,14 +104,14 @@ See the variable `align-rules-list' for more details.")
   '("^\\([^:]+\\):\\([0-9]+\\): *\\([\n]+\\)" 1 2 nil 3)
   "Regexp matching ruby error messages.")
 
+(defun flymake-create-temp-in-system-tempdir (filename prefix)
+  (make-temp-file (or prefix "flymake-ruby")))
+
 (defun flymake-ruby-init ()
   (condition-case er
       (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                         'flymake-create-temp-inplace))
-             (local-file  (file-relative-name
-                           temp-file
-                           (file-name-directory buffer-file-name))))
-        (list rails-ruby-command (list "-c" local-file)))
+                         'flymake-create-temp-in-system-tempdir)))
+        (list rails-ruby-command (list "-c" temp-file)))
     ('error ())))
 
 (defun flymake-ruby-load ()
