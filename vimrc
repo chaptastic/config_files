@@ -170,12 +170,18 @@ if has("gui_running")
   " highlight LineNr guibg=#c0c0c0
   " highlight NonText		guifg=#808080
   " highlight SpecialKey guifg=#808080
-  set background=dark
+  set background=light
   colorscheme peaksea
-  highlight LineNr guibg=#101010
-  highlight NonText		guifg=#808080
-  highlight SpecialKey guifg=#808080
-  highlight Cursor guibg=#60c060
+  " colorscheme lucius
+
+  hi LineNr guibg=#c0c0c0
+
+  " dark background
+  " highlight LineNr guibg=#101010
+  " highlight NonText		guifg=#808080
+  " highlight SpecialKey guifg=#808080
+  " highlight Cursor guibg=#60c060
+
   " colorscheme wombat
   " highlight LineNr guibg=#101010
   " highlight NonText		guifg=#808080
