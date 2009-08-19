@@ -130,9 +130,12 @@
 ;(add-to-list 'load-path "~/.emacs.d/rinari")
 ;(require 'rinari)
 
+(require 'sass-mode)
+
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
 
 ;; Use j/k for down/up in buffer menu
 (define-key Buffer-menu-mode-map "j" 'visual-line-down)
