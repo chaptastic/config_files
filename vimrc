@@ -174,6 +174,7 @@ if has("gui_running")
   colorscheme peaksea
   " colorscheme lucius
 
+  hi Normal guibg=#f0f0f0
   hi LineNr guibg=#c0c0c0
 
   " dark background
