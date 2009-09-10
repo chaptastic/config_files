@@ -109,7 +109,7 @@
 ;;(color-theme-charcoal-black) ;;* 
 
 (set-face-font 'default
-               "-apple-consolas-medium-r-normal--12-0-72-72-m-0-iso10646-1")
+               "-apple-menlo-medium-r-normal--10-0-72-72-m-0-iso10646-1")
 
 (require 'fuzzy-match)
 
@@ -120,9 +120,13 @@
 ;; (icy-mode t)
 
 ;; Ruby setup
+(add-to-list 'load-path (concat dotfiles-dir "emacs-rails-reloaded"))
+(require 'rails-autoload)
 
-(add-to-list 'load-path (concat dotfiles-dir "emacs-rails"))
-(require 'rails)
+(add-hook 'ruby-mode-hook 'flyspell-prog-mode)
+(add-hook 'javascript-mode-hook 'flyspell-prog-mode)
+(add-hook 'nxml-mode-hook 'flyspell-prog-mode)
+; (add-to-list 'flyspell-prog-text-faces 'nxml-text-face)
 
 ;(add-to-list 'load-path "~/.emacs.d/rinari")
 ;(require 'rinari)
