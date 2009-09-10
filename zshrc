@@ -30,7 +30,7 @@ export PS1='%n@%m: %~%# '
 autoload -U promptinit
 promptinit
 
-prompt adam2
+# prompt adam2
 
 # keep more history
 export HISTSIZE=2100
