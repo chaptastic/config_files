@@ -2,3 +2,6 @@
 .swo
 vim/.netrwhist
 .DS_Store
+*~
+emacs.d/auto-save-list
+.#*
