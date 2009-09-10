@@ -8,9 +8,6 @@
 ;(add-to-list 'exec-path (concat erlang-root-dir "bin"))
 ;(require 'erlang-start)
 
-(setq mac-tool-bar-display-mode nil)
-(tool-bar-mode nil)
-
 (setq vc-follow-symlinks nil)
 
 (fringe-mode 'default)
@@ -160,5 +157,8 @@
 (if (file-exists-p user-specific-config) (load user-specific-config))
 (if (file-exists-p user-specific-dir)
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
+
+(setq mac-tool-bar-display-mode nil)
+(tool-bar-mode nil)
 
 (server-start)
