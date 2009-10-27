@@ -191,7 +191,7 @@ if has("gui_running")
   " " highlight SpecialKey guifg=#808080
 else
   " set t_Co=256
-  set background=dark
+  set background=light
   colorscheme peaksea
 endif
 
