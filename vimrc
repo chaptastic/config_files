@@ -165,33 +165,38 @@ endif
 
 " Color scheme
 if has("gui_running")
+  set guifont=Menlo:h12,Consolas:h12
+  colorscheme zenburn
+  " " set background=light
+  " " colorscheme peaksea
+  " " highlight LineNr guibg=#c0c0c0
+  " " highlight NonText		guifg=#808080
+  " " highlight SpecialKey guifg=#808080
   " set background=light
   " colorscheme peaksea
-  " highlight LineNr guibg=#c0c0c0
-  " highlight NonText		guifg=#808080
-  " highlight SpecialKey guifg=#808080
-  set background=light
-  colorscheme peaksea
-  " colorscheme lucius
+  " " colorscheme lucius
 
-  hi Normal guibg=#f0f0f0
-  hi LineNr guibg=#c0c0c0
+  " hi Normal guibg=#f0f0f0
+  " hi LineNr guibg=#c0c0c0
 
-  " dark background
-  " highlight LineNr guibg=#101010
-  " highlight NonText		guifg=#808080
-  " highlight SpecialKey guifg=#808080
-  " highlight Cursor guibg=#60c060
+  " " dark background
+  " " highlight LineNr guibg=#101010
+  " " highlight NonText		guifg=#808080
+  " " highlight SpecialKey guifg=#808080
+  " " highlight Cursor guibg=#60c060
 
-  " colorscheme wombat
-  " highlight LineNr guibg=#101010
-  " highlight NonText		guifg=#808080
-  " highlight SpecialKey guifg=#808080
+  " " colorscheme wombat
+  " " highlight LineNr guibg=#101010
+  " " highlight NonText		guifg=#808080
+  " " highlight SpecialKey guifg=#808080
 else
-  set t_Co=256
+  " set t_Co=256
   set background=dark
   colorscheme peaksea
 endif
+
+" Typewriter mode (keep cursor centered) 
+" set scrolloff=999
 
 " Numbers
 set number
@@ -237,6 +242,28 @@ nmap <leader>x :Bclose<CR>
 " automatically save and restore views
 au BufWinLeave * mkview
 au BufWinEnter * silent! loadview
+
+" keep four lines of context
+
+let g:tcl_dfs_scrolloff = 4
+let &scrolloff=g:tcl_dfs_scrolloff
+let g:tcl_dfs_prevstate=&fullscreen
+" let g:tcl_dfs_columns = &columns
+function! DoFullScreen()
+  if &fullscreen != g:tcl_dfs_prevstate
+    echom "The value of fullscreen is" &fullscreen
+    if &fullscreen
+      " echo "Setting up for fullscreen"
+      let g:tcl_dfs_scrolloff=&scrolloff
+      let &scrolloff=999
+    else
+      " echo "Restoring pre-fullscreen state"
+      let &scrolloff=g:tcl_dfs_scrolloff
+    endif
+    let g:tcl_dfs_prevstate=&fullscreen
+  endif
+endfunction
+au VimResized * :call DoFullScreen()
 
 let vimclojure#NailgunClient = "~/.vim/bin/ng"
 " Clojure syntax support
