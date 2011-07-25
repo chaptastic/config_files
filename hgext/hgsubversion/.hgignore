@@ -1,0 +1,14 @@
+syntax:glob
+build
+*.pyc
+*.pyo
+.DS_Store
+*.swp
+*~
+.coverage
+cover
+*.py,cover
+MANIFEST
+dist
+*.egg-info
+hgsubversion/__version__.py

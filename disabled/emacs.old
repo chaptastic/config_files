@@ -1,0 +1,313 @@
+(setq dotfiles-dir (expand-file-name "~/.emacs.d/"))
+(add-to-list 'load-path dotfiles-dir)
+
+(setq plugins-dir (concat dotfiles-dir "plugins/"))
+(add-to-list 'load-path plugins-dir)
+
+(defun add-plugin-directories-with-attributes (dirs)
+  (unless (null dirs)
+    (let* ((curr (car dirs))
+	   (dir (car curr))
+	   (type (cadr curr))
+	   (rest (cdr dirs)))
+      (if (eq type 't)
+	  (add-to-list 'load-path (concat plugins-dir dir))
+	  nil)
+      (add-plugin-directories-with-attributes rest))))
+(add-plugin-directories-with-attributes (directory-files-and-attributes plugins-dir))
+
+;; Setup server mode
+;; (add-hook 'server-switch-hook
+;; 	  (lambda nil
+;; 	    (let ((server-buf (current-buffer)))
+;; 	      (bury-buffer)
+;; 	      (switch-to-buffer-other-frame server-buf))))
+(add-hook 'server-switch-hook
+	  (lambda ()
+	    (when (current-local-map)
+	      (use-local-map (copy-keymap (current-local-map))))
+	    (local-set-key (kbd "C-x k") 'server-edit)))
+(add-hook 'server-done-hook 'delete-frame)
+(server-start)
+
+;;; Elpa package init
+(when
+    (load
+     (concat dotfiles-dir  "elpa/package.el"))
+  (package-initialize))
+
+(require 'ido)
+(ido-mode t)
+(ido-everywhere 1)
+(setq ido-enable-flex-matching t)
+(setq ido-create-new-buffer 'prompt)
+(setq ido-enable-tramp-completion nil)
+(setq ido-confirm-unique-completion nil)
+(setq ido-show-dot-for-dired t)
+(setq ido-use-filename-at-point 'guess)
+
+;; Set up mac modifier keys
+(setq mac-option-modifier 'meta)
+(setq mac-function-modifier 'none)
+(setq mac-command-modifier 'super)
+
+;; set up snippets
+;; (require 'yasnippet)
+;; (yas/initialize)
+;; (yas/load-directory (concat dotfiles-dir "snippets"))
+
+
+(setq cua-enable-cua-keys nil)
+(cua-mode t)
+
+;; set up haskell mode
+(load (concat dotfiles-dir "plugins-noauto/haskell-mode/haskell-site-file"))
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+;; Set up nXML mode
+;;; Use nxml-mode instead of sgml, xml or html mode.
+(mapc
+ (lambda (pair)
+   (if (or (eq (cdr pair) 'xml-mode)
+	   (eq (cdr pair) 'sgml-mode)
+	   (eq (cdr pair) 'html-mode))
+       (setcdr pair 'nxml-mode)))
+ magic-mode-alist)
+
+(add-to-list 'auto-mode-alist
+	     (cons (concat "\\." (regexp-opt '("xml" "xsd" "sch" "rng" "xslt" "svg" "rss") t) "\\'")
+		   'nxml-mode))
+
+(unify-8859-on-decoding-mode)
+
+;; (setq magic-mode-alist
+;;       (cons '("<＼＼?xml " . nxml-mode)
+;; 	    magic-mode-alist))
+(fset 'xml-mode 'nxml-mode)
+
+;; Set up nXHTML mode
+(load-file (concat dotfiles-dir "plugins-noauto/nxhtml/autostart.el"))
+
+;; Load eproject
+;; (require 'eproject)
+;; (require 'eproject-extras)
+
+;; Ruby Setup
+(add-to-list 'auto-mode-alist '("\\.rake" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+
+(require 'flymake)
+
+(defvar flymake-ruby-err-line-patterns '(("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3)))
+(defvar flymake-ruby-allowed-file-name-masks '((".+\\.\\(rb\\|rake\\)$" flymake-ruby-init)
+                                               ("Rakefile$" flymake-ruby-init)))
+ 
+;; Not provided by flymake itself, curiously
+(defun flymake-create-temp-in-system-tempdir (filename prefix)
+  (make-temp-file (or prefix "flymake-ruby")))
+ 
+;; Invoke ruby with '-c' to get syntax checking
+(defun flymake-ruby-init ()
+  (list "ruby" (list "-c" (flymake-init-create-temp-buffer-copy
+                           'flymake-create-temp-in-system-tempdir))))
+ 
+(defun flymake-ruby-load ()
+  (interactive)
+  (set (make-local-variable 'flymake-allowed-file-name-masks) flymake-ruby-allowed-file-name-masks)
+  (set (make-local-variable 'flymake-err-line-patterns) flymake-ruby-err-line-patterns)
+  (flymake-mode t))
+ 
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+	    
+	    ;; Don't want flymake mode for ruby regions in rhtml
+	    ;; files and also on read only files
+	    (if (and (not (null buffer-file-name)) 
+		     (file-writable-p buffer-file-name))
+		(flymake-ruby-load))
+	    ))
+
+(require 'rails-autoload)
+
+;; Javascript
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;; Scala mode
+(require 'scala-mode-auto)
+;; (setq yas/scala-mode-dir (concat dotfiles-dir "plugins/scala/contrib/yasnippet/snippets"))
+;; (yas/load-directory yas/scala-mode-dir)
+(add-hook 'scala-mode-hook
+	  '(lambda ()
+	    (yas/minor-mode-on)))
+
+;; Misc preferences
+; (setq pop-up-frames t)
+(global-visual-line-mode t)
+(fringe-mode 'default)
+(global-font-lock-mode t)
+(setq visible-bell nil)
+(setq ignore-bell-commands
+'(isearch-abort abort-recursive-edit exit-minibuffer keyboard-quit))
+(setq ring-bell-function 
+      (lambda ()
+	(unless (memq this-command ignore-bell-commands)
+	  (ding))))
+(setq default-major-mode 'text-mode)
+(setq ispell-program-name "aspell")
+(setq dnd-open-file-other-window t)
+
+; setup for terminal encoding
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+; don't minimize frame
+(when window-system
+    (global-unset-key [?\C-x ?\C-z]))
+(when window-system
+    (global-unset-key [?\C-z]))
+
+; Make arrow keys consistent
+;; (global-set-key [M-right] 'forward-sentence)
+;; (global-set-key [S-right] 'end-of-visual-line)
+;; (global-set-key [C-M-right] 'forward-sexp)
+;; (global-set-key [M-left] 'backward-sentence)
+;; (global-set-key [S-left] 'back-to-indentation)
+;; (global-set-key [C-M-left] 'backward-sexp)
+
+; set the default frame width
+(setq default-frame-alist
+      (cons '(width . 100)
+	    (assq-delete-all 'width default-frame-alist)))
+;;
+;; Better font
+;;
+(set-face-font 'default
+               "-apple-menlo-medium-r-normal--11-0-72-72-m-0-iso10646-1")
+
+(setq cursor-type 'bar)
+(set-face-background 'cursor "SlateGray")
+
+;; Always highlight the cursor line
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "lemon chiffon")
+
+;; Show tooltips in echo area rather than popup
+;; popup causes havoc with spaces
+(setq tooltip-use-echo-area t)
+
+;;
+;; Delete indention when kill-line called at eol
+;;
+(defun kill-and-join-forward (&optional arg)
+      (interactive "P")
+      (if (and (eolp) (not (bolp)))
+          (progn (forward-char 1)
+                 (just-one-space 0)
+                 (backward-char 1)
+                 (kill-line arg))
+        (kill-line arg)))
+(global-set-key "\C-k" 'kill-and-join-forward)
+
+(defun comment-or-uncomment-region-or-line (&optional arg)
+  "Comment or uncomment region if active or single line if not"
+  (interactive "P")
+  (if mark-active
+      (comment-or-uncomment-region (region-beginning) (region-end) arg)
+      (comment-or-uncomment-region (line-beginning-position)
+				   (line-beginning-position 2)
+				   arg)))
+(global-set-key (kbd "s-/") 'comment-or-uncomment-region-or-line)
+
+(defadvice kill-ring-save (before slick-copy activate compile) "When called
+  interactively with no active region, copy a single line instead."
+  (interactive (if mark-active (list (region-beginning) (region-end)) (message
+  "Copied line") (list (line-beginning-position) (line-beginning-position
+  2)))))
+
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill a single line instead."
+  (interactive
+    (if mark-active (list (region-beginning) (region-end))
+      (list (line-beginning-position)
+        (line-beginning-position 2)))))
+
+;;
+;; Add a newline at the end of the current line and indent
+;;
+(defun append-newline-and-indent ()
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+(global-set-key [s-return] 'append-newline-and-indent)
+
+(global-set-key [s-down] 'end-of-buffer)
+(global-set-key [s-up] 'beginning-of-buffer)
+(global-set-key [s-right] 'end-of-line)
+(global-set-key [s-left] 'beginning-of-line)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
+(global-set-key (kbd "\C-c\C-cf") 'ns-toggle-fullscreen)
+
+(setq vc-follow-symlinks nil)
+
+(defun insert-key-sequence ()
+  (interactive)
+  (insert (prin1-to-string (read-key-sequence-vector "Key:"))))
+
+;;
+;; SLIME setup
+;;
+(setq inferior-lisp-program "~/build/ccl/scripts/ccl64")
+(setq lisp-indent-function 'common-lisp-indent-function)
+(setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+(setq common-lisp-hyperspec-root "file:///Users/chap/build/HyperSpec-7-0/HyperSpec/")
+(setq slime-startup-animation nil)
+
+;; (require 'slime-autoloads)
+;; (slime-setup)
+
+;;
+;; Better paren matching
+;;
+(require 'mic-paren)
+(paren-activate)
+(setf paren-priority 'close)
+(set-face-background 'paren-face-match "LightSkyBlue1")
+(set-face-foreground 'paren-face-match "royal blue")
+
+(set-face-foreground 'font-lock-comment-face "gray50")
+(set-face-background 'mode-line "SkyBlue2")
+(set-face-background 'mode-line-inactive "LightSteelBlue1")
+(set-face-foreground 'mode-line-inactive "gray35")
+
+;; Start up CEDET
+(load-file (concat dotfiles-dir "plugins-noauto/cedet/common/cedet.el"))
+(global-ede-mode t)
+(semantic-load-enable-code-helpers)
+(require 'semantic-ia)
+
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(fringe-mode nil nil (fringe))
+ '(indicate-buffer-boundaries (quote left))
+ '(indicate-empty-lines t)
+ '(ruby-deep-arglist nil)
+ '(ruby-deep-indent-paren nil)
+ '(server-mode t)
+ '(server-window (quote switch-to-buffer-other-frame)))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )

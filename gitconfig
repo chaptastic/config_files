@@ -1,6 +1,9 @@
 [core]
-	editor = vim +0 -f
+	editor = mvim +0 -f
 	whitespace = -trailing-space
+[user]
+	name = Chap Lovejoy
+	email = chaplovejoy@gmail.com
 [color]
 	diff = auto
 	status = auto
@@ -16,7 +19,17 @@
 	sre = svn rebase
 	sdc = svn dcommit --rmdir
 	ms = merge --squash
+  mt = mergetool -y
+  rc = rebase --continue
+  l = log --color --decorate --abbrev-commit --graph
+  po = push origin
+  ap = am -3 --signoff
 [merge]
-	tool = opendiff
+  tool = opendiff
+[mergetool]
+  prompt = false
 [diff "ruby"]
 	funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
+[github]
+	user = chaptastic
+	token = c6c892dcca13dc04e67bf865b629d5f1

@@ -43,18 +43,32 @@ setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt inc_append_history
 
-export PATH=~/bin:~/.cabal/bin:/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/libexec/git-core:~/ec2-tools/bin:~/.clojure/bin
+export PATH=~/bin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
 
-#export EDITOR="mvim -f"
-export EDITOR="mvim -f -c \"au VimLeave * !open -a Terminal\""
-export ARCHFLAGS="-arch i386"
+export EDITOR="mvim -f"
+# export EDITOR="mvim -f -c \\"au VimLeave * !open -a Terminal\\""
+#export EDITOR="$HOME/bin/emc"
+#export EDITOR="mate -w"
+#export EDITOR="${HOME}/bin/ec"
+# export ARCHFLAGS="-arch x86_64"
 
 export LC_CTYPE=en_US.UTF-8
-
-export CLOJURE_CP=$HOME/.clojure/clojure.jar:$HOME/.clojure/clojure-contrib.jar
 
 # aliases
 if [ -e "$HOME/.zsh_local" ]; then
   source "$HOME/.zsh_local"
 fi
+
+#export GOROOT=$HOME/Projects/go
+#export GOOS=darwin
+#export GOARCH=amd64
+#export GOBIN=$HOME/bin
+
+# export JAVA_HOME=/Library/Java/Home
+# export CATALINA_HOME=/Library/Tomcat/Home
+#export JUNIT_HOME=$HOME/build/junit4.8.1
+#export CLASSPATH=$CLASSPATH:$JUNIT_HOME/junit-4.8.1.jar
+
+# export MAVEN_OPTS="-Xmx1024m"
+# export ANT_OPTS="-Xmx1024m"

@@ -1,0 +1,237 @@
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+call pathogen#runtime_append_all_bundles() 
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set nobackup
+set nowritebackup
+set history=50		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+
+" No audible bell
+set vb
+
+" No toolbar
+" set guioptions-=T
+" Use console dialogs
+" set guioptions+=c
+
+" No toolbar, no scollbars, use menus, use tabs, console dialogs
+set guioptions=egmtc
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+  set hlsearch
+endif
+
+if has("gui_macvim")
+  set fuoptions=maxvert,maxhorz
+endif
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype off
+  filetype plugin indent on
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  augroup END
+
+else
+
+  set autoindent		" always set autoindenting on
+
+endif " has("autocmd")
+
+if has("folding")
+  set foldenable
+  set foldmethod=syntax
+  " set foldlevel=1
+  set foldnestmax=2
+  set foldminlines=4
+  set foldlevelstart=99
+  set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
+
+  " automatically open folds at the starting cursor position
+  autocmd BufReadPost .foldo!
+endif
+
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+
+" Display extra whitespace
+" set list listchars=tab:»·,trail:·,eol:$
+set list listchars=tab:▸·,trail:·,eol:¬
+
+" Always display the status line
+set laststatus=2
+
+" \ is the leader character
+" let mapleader = "\\"
+let mapleader = ","
+
+
+" Always display the status line
+set laststatus=2
+set cmdheight=2
+set shortmess=atT
+
+" No Help, please
+map <F1> <Esc>
+imap <F1> <Esc>
+
+" Press ^F from insert mode to insert the current file name
+imap <C-F> <C-R>=expand("%")<CR>
+
+" Apple-Enter opens a new line below in edit mode
+imap <D-Enter> <C-o>o
+
+" Map emacs input keys
+imap <C-a> <C-o>^
+imap <C-e> <C-o>$
+imap <C-k> <C-o>D
+cmap <C-a> <C-Left>
+cmap <C-e> <C-Right>
+
+" Map Cmd-/ to comment block in visual and normal mode
+vmap <D-/> :TComment<CR>
+nmap <D-/> :TComment<CR>
+
+if has("gui_running")
+  set guifont=Mensch:h11,Menlo:h11,Consolas:h11
+endif
+
+colorscheme chapvim
+
+hi NonText guifg=#cccccc
+hi SpecialKey guifg=#cccccc
+hi CursorLine guibg=#f0f0f0
+hi Comment guifg=#808080
+hi Constant guifg=Blue2
+
+set cul
+" set cuc
+
+" Numbers
+set number
+set numberwidth=5
+
+
+" case only matters with mixed case expressions
+set ignorecase
+set smartcase
+
+" use hidden buffers instead of annoyingly closing
+set hidden
+set confirm
+
+function! ToggleScratch()
+  if expand('%') == g:ScratchBufferName
+    quit
+  else
+    Sscratch
+  endif
+endfunction
+
+map <leader>s :call ToggleScratch()<CR>
+
+" automatically save and restore views
+set vop=cursor,folds,unix
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
+
+" Configure NERD Tree
+" let NERDTreeShowBookmarks = 1
+" let NERDChristmasTree = 1
+" let NERDTreeChDirMode = 2
+" let NERDTreeQuitOnOpen = 1
+
+" map <leader>p :NERDTreeToggle<CR>
+" map <leader>t :CommandT<CR>
+function! GetCurDir()
+  let cfd = expand("%:h")
+  if cfd == ""
+    return getcwd()
+  else
+    return cfd
+  endif
+endfunction
+map <leader>p :Explore<CR>
+map <leader>f :FufFile <C-R>=GetCurDir()<CR>/<CR>
+map <leader>b :FufBuffer<CR>
+map <leader>g :FufTag<CR>
+map <leader>u :GundoToggle<CR>
+
+
+nmap <leader>X :Bclose!<CR>
+nmap <leader>x :Bclose<CR>
+
+set spell
+set spelllang=en_us
+
+set formatprg=par\ -re
+
+let g:rails_expensive=0
+let ruby_no_expensive = 1
+let g:GetLatestVimScripts_allowautoinstall=1
+
+let g:FactorRoot = "/Applications/factor"
+let g:FactorVocabRoots = ["core", "basis", "extra", "/Users/chap/Projects/factor/work"]
+let g:FactorNewVocabRoot = "/Users/chap/Projects/factor/work"
+
+" setup taglist plugin
+map <leader>t :TlistToggle<CR>
+let Tlist_Use_Right_Window = 1
+let Tlist_Show_One_File = 0
+let Tlist_Inc_Winwidth = 1
+let Tlist_Close_On_Select = 0
+let Tlist_Enable_Fold_Column = 1
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Hilight_Tag_On_BufEnter = 1
+let Tlist_Display_Tag_Scope = 0
+let Tlist_WinWidth = 30
+
+
+au BufRead,BufNewFile *.scss setfiletype css
+au BufRead,BufNewFile *.jsx setfiletype javascript
+
+set popt=syntax:y,duplex:long,paper:letter
+
+" Settings for VimClojure
+let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
+let vimclojure#ParenRainbow=0           " Rainbow parentheses'!
+
+let vimclojure#WantNailgun = 1
+let vimclojure#NailgunClient = "/Users/chap/bin/ng"

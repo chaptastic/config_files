@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'interactive_editor'
+
 # print SQL to STDOUT
 if ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')
   require 'logger'
@@ -13,11 +16,19 @@ ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
 # History
 require 'irb/ext/save-history'
 IRB.conf[:SAVE_HISTORY] = 100
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+# IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 
 # Easily print methods local to an object's class
 class Object
   def local_methods
     (methods - Object.instance_methods).sort
+  end
+end
+
+require 'looksee'
+
+def file_contents(fn)
+  File.open(fn, "rb") do |file|
+    file.read
   end
 end

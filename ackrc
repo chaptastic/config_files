@@ -1,3 +1,4 @@
+--type-set=sass=.sass,.scss,haml=.haml
 --ignore-dir=tmp
 --smart-case
 --context=3

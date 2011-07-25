@@ -1,1 +1,2 @@
 alias slice="ssh -p 6120 209.20.82.172"
+alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"

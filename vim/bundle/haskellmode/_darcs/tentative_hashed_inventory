@@ -1,0 +1,86 @@
+pristine:0000000483-3d1e5441d6e1b3ce63babaa270fb1610da19bf4ee6d2e594fc75c922bf227679
+[start using darcs haskellmode-20090430
+claus.reinke@talk21.com**20100616154750
+ Ignore-this: bfd799dc7229bdeb59a2630704b7bc5f
+] 
+hash: 0000100350-7b2cc547e289958f2a397d8aaee669cf84bd239c2542d6e6b5e4794cc3e4e544
+[minor path changes for ghc-6.12.*
+claus.reinke@talk21.com**20100617142206
+ Ignore-this: d392f2c84490e69737bf3983072e7cf2
+] 
+hash: 0000001035-7e3c58b51f3f2485c3d8aae26d5258dc0cffdd4422ee24b5b5e4516aa94d15fc
+[use full GHCi command names (#13)
+claus.reinke@talk21.com**20100617151606
+ Ignore-this: 815d082dbb9798ef74e331716bdd2fe3
+] 
+hash: 0000000376-b841521e0047dcf1936de4c6a1c0d044dd4f4062d7a18191d21823075deff0e9
+[sort OPTIONS_GHC and LANGUAGE pragma menues, use script-ocal variables (#16)
+claus.reinke@talk21.com**20100617151723
+ Ignore-this: 4e4fec8c3d7b81d8819f1796c91dec45
+] 
+hash: 0000001467-80edfa76ce53edb08d9e806dfc9919bf32338bcaa7b1b6b19a18078d8becf15f
+[don't query GHCi in GHC_TypeBallon() (#14)
+claus.reinke@talk21.com**20100618154419
+ Ignore-this: 8d233798ebf47cf6df0d103c4ec6dac
+] 
+hash: 0000001624-323c41c14de51220753089ad7648614e00e6252a96765ef9a53aba4cbdca781f
+[start caching GHC configuration info (#8); move GHC version code to autoload
+claus.reinke@talk21.com**20100622085654
+ Ignore-this: 2d9614d9435a067fb86ee5212d631395
+] 
+hash: 0000006138-8010cad0d600cfe6de4c205cc941cb628295656c5559c63bca348968dfe3c29b
+[allow for import {-# SOURCE #-} in haskellmode#GatherImports
+claus.reinke@talk21.com**20100622160107
+ Ignore-this: b68995160a3698fd07c0c7a635d24b63
+] 
+hash: 0000000322-81c82541355811ab8afbdbece128fbad2aa4309e258a8e803c6390abef6f4fba
+[comments, last-modified dates
+claus.reinke@talk21.com**20100622182506
+ Ignore-this: 5568a452ea1b3a0d052c393fbb948045
+] 
+hash: 0000000612-0f6cfc2e58fd2880a5b794d390e24a2decf4158190f26fa9629bc53d7f94772c
+[be more helpful if type is not known
+claus.reinke@talk21.com**20100910162020
+ Ignore-this: 82139355aec49f65c946f776c02c72b6
+] 
+hash: 0000000901-d4e81ffc04a84811c2078d3102c66bbba227151168979b8a252b9107efbda911
+[change note
+claus.reinke@talk21.com**20100910162234
+ Ignore-this: 34278995444aca17eba9dfda14a11a08
+] 
+hash: 0000000208-73e9dd1f3ff2145cbe3807c739f5af031869ed02b21e965c92fae88d38490f9d
+[autoload/haskellmode.vim: fix fileformat to unix
+claus.reinke@talk21.com**20101117173809
+ Ignore-this: 3ce18f7ef4b0d412a7c31a7c0d90f902
+] 
+hash: 0000013909-eb16ffbb5042cc69df87a8f1bb989d4a99fa68a6490cc95ece064e5afd189bc7
+[adapt to new Haddock HTML-index file format
+claus.reinke@talk21.com**20101117174205
+ Ignore-this: 7ac996b7cbf515aa302402fe58d78194
+] 
+hash: 0000002930-728285d1f321f19da418cefe516bf533bb4a1b04e2a98985ce8b212a5b4e7eb6
+[allow for package info in haddock index modules
+claus.reinke@talk21.com**20101211004835
+ Ignore-this: e91bf7b63d9a2b25a4ecc628765d2dff
+] 
+hash: 0000001315-35463d9601c6f7bfbe56f8dff02e03fab61302a0b300c612257da6b46c9dc2cc
+[improve location of generated import statements
+claus.reinke@talk21.com**20101211005337
+ Ignore-this: bf4e5790fcf0b70a3b245a3b81813eae
+] 
+hash: 0000002689-dcf645155ff85da42667ae07bc2d6b0331b195cb778cd6b3e1dac50d0edcf727
+[package info in haddock index is optional
+claus.reinke@talk21.com**20101211010916
+ Ignore-this: 965c09244930632240f4a2d252724821
+] 
+hash: 0000001319-f85a10fd0487048a9de67a1871d5dc9b2315cdf2143ec8cd7d86f9ba992335a7
+[FIX #24: limit QuickFixCmdPost to compiler ghc
+claus.reinke@talk21.com**20110122135757
+ Ignore-this: 9d9b66b836ec40fdb558906bef252bd9
+] 
+hash: 0000000397-02b2ddb5e31f2258d3368f8cf64588f4bbdfa4d2c2a2c9c245f39224c8ce39d9
+[update dates/changes for previous fix
+claus.reinke@talk21.com**20110122141730
+ Ignore-this: c89ec98d146efde874a45a35d3f8e6a7
+] 
+hash: 0000000319-8ee1912346b5df5b0f3fad96cdf46ff24995cf9dd50085c3c72e95893c5ff84f
