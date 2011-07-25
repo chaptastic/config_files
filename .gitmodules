@@ -1,12 +1,3 @@
-[submodule "emacs.d/rinari"]
-	path = emacs.d/rinari
-	url = git://github.com/eschulte/rinari.git
-[submodule "emacs.d/emacs-reloaded"]
-	path = emacs.d/emacs-reloaded
-	url = git://github.com/dima-exe/emacs-rails-reloaded.git
-[submodule "emacs.d/plugins/eproject"]
-	path = emacs.d/plugins/eproject
-	url = git://github.com/jrockway/eproject.git
 [submodule "vim-pathogen"]
 	path = vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
