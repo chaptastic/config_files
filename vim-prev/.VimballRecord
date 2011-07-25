@@ -1,2 +1,0 @@
-snippy_plugin.vba: call delete('/Users/jferris/.vim/plugin/snippetsEmu.vim')|call delete('/Users/jferris/.vim/doc/snippets_emu.txt')
-getscript.vba: call delete('/Users/chap/.vim/plugin/getscriptPlugin.vim')|call delete('/Users/chap/.vim/autoload/getscript.vim')|call delete('/Users/chap/.vim/GetLatest/GetLatestVimScripts.dist')|call delete('/Users/chap/.vim/doc/pi_getscript.txt')
